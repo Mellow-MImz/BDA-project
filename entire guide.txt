@@ -1,0 +1,38 @@
+Creating the environment:
+	3) conda create -n send pip python=3.6
+	4) y
+	5) source activate send
+	7) To get out: source deactive
+Installations:
+- conda install tensorflow
+- conda install -c menpo opencv3
+- conda install cython
+
+following this tutorial: https://pjreddie.com/darknet/yolo/
+	- Use weights found in email sent to myself on the Wed, 3 Oct
+	- use yolov2.cfg as it shows output and not yolov3.cfg
+	
+Prep for training:
+- Using the file entire.py
+	Follow the steps written below to create the necessary files
+	Note: change the file directories respectively
+	
+NB: COPY ACROSS IMAGE.C FILE IN SRC FOLDER FROM THE RETRY FOLDER
+then change the directory which the bounding box file wil be stored
+- search 'FILE'
+	
+- Create a .data file contating the following:
+	  1 classes= 20
+	  2 train  = <path-to-voc>/train.txt
+	  3 valid  = <path-to-voc>2007_test.txt
+	  4 names = data/voc.names
+	  5 backup = backup
+	  The two txt files refer to the ones created in point 1
+- Download the trained weights from https://pjreddie.com/media/files/darknet53.conv.74
+
+To train:
+- Run: ./darknet detector train me/sub_data.data cfg/yolov3-voc.cfg darknet53.conv.74
+
+- check out this site for similar cnn frameworks to use: https://pjreddie.com/darknet/imagenet/
+- Test using: ./darknet detect cfg/yolov2.cfg bin/yolo.weights data/dingo_630.jpg 
+
